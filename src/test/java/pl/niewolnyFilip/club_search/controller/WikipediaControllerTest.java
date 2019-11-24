@@ -26,16 +26,27 @@ public class WikipediaControllerTest {
 
 
     @Test
-    void redirectToFootballClubPage() throws Exception {
+    void returnStringToFootballClubPage() throws Exception {
         String result = "https://en.wikipedia.org/?curid=677622";
         given(service.getResponseFromWikipedia("poznan")).willReturn(result);
 
         mvc.perform(get("/poznan" )
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isFound());
+                .andExpect(status().isOk());
 
         mvc.perform(get("/poznan/city" )
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void redirectToFootballClubPage() throws Exception {
+
+        String result = "https://en.wikipedia.org/wiki/Lech_Poznań";
+        given(service.getResponseFromWikipedia("poznan")).willReturn(result);
+        mvc.perform(get("/redirect/poznan" )
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isFound());
+
     }
 }

@@ -17,7 +17,7 @@ class URLServiceTest {
 
     @Test
     void createURL() {
-        String resultTest = "https://en.wikipedia.org/?curid=677622";
+        String resultTest = "https://en.wikipedia.org/wiki/Lech_Poznań";
         String poznan = urlService.createURL("poznan");
         assertEquals(resultTest , poznan);
 

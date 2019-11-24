@@ -19,14 +19,9 @@ class WikipediaServiceTest {
     @Test
     void getResponseFromWikipedia_Positive() {
         String cityTest = "liverpool";
-        String resultTest = "https://en.wikipedia.org/?curid=18119";
+        String resultTest = "https://en.wikipedia.org/wiki/Liverpool_F.C.";
         String responseFromWikipedia = wikipediaService.getResponseFromWikipedia(cityTest);
         assertEquals(responseFromWikipedia , resultTest);
     }
 
-    @Test
-    void getResponseFromWikipedia_Negativ() {
-        String cityTest = "xyz";
-        assertThrows(MyException.class , () ->wikipediaService.getResponseFromWikipedia(cityTest));
-    }
-}
+ }

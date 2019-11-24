@@ -19,6 +19,11 @@ public class WikipediaController {
     }
 
     @RequestMapping(value = "/{cityName}")
+    public String returnStringToFootballClubPage(@PathVariable String cityName) {
+         return  wikipediaService.getResponseFromWikipedia(cityName);
+    }
+
+    @RequestMapping(value = "/redirect/{cityName}")
     public RedirectView redirectToFootballClubPage(@PathVariable String cityName) {
         String url = wikipediaService.getResponseFromWikipedia(cityName);
         return new RedirectView(url);

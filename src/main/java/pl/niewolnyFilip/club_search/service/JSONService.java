@@ -40,7 +40,7 @@ public class JSONService {
             first = getJsonNode(searchResult, "snippet", "^.*(club).*$");
         }
         if (first.isPresent()) {
-            return createRedirectURL(first.get().get("pageid").toString());
+            return createRedirectURL(first.get().get("title").textValue().replace(" " , "_"));
         }
         throw new MyException("Nie ma klubu w tym miescie w pierwszych 10 wynikach");
     }
@@ -53,15 +53,7 @@ public class JSONService {
         return first;
     }
 
-    public String createRedirectURL(String pageId) {
-        URL result;
-        try {
-            URIBuilder uri = new URIBuilder("https://en.wikipedia.org/");
-            uri.addParameter("curid", pageId);
-            result = uri.build().toURL();
-        } catch (URISyntaxException | MalformedURLException e) {
-            throw new MyException("Nie udało stworzyć się linku do klubu");
-        }
-        return result.toString();
+    public String createRedirectURL(String title) {
+            return "https://en.wikipedia.org/wiki/" + title;
     }
 }

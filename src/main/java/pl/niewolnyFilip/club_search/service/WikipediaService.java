@@ -1,6 +1,7 @@
 package pl.niewolnyFilip.club_search.service;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,8 @@ public class WikipediaService {
     }
 
     public String getResponseFromWikipedia(String city) {
-        return urlService.createURL(city);
+        String url = urlService.createURL(city);
+        return StringUtils.stripAccents(url);
     }
 
 

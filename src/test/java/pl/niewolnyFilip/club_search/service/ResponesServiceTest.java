@@ -20,9 +20,9 @@ class ResponesServiceTest {
 
     @Test
     void getResponseFromWikipedia() throws MalformedURLException {
-        String urlTest = "https://en.wikipedia.org/?curid=18119";
+        String urlTest = "https://en.wikipedia.org/wiki/Liverpool_F.C.";
         URL url = new URL("https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srlimit=10&srsearch=football+intitle:liverpool");
         String responseFromWikipedia = responesService.getResponseFromWikipedia(url);
-        assertEquals(responseFromWikipedia, urlTest);
+        assertEquals(urlTest, responseFromWikipedia);
     }
 }

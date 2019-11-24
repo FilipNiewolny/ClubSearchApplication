@@ -35,9 +35,9 @@ class JSONServiceTest {
     void createRedirectURL() {
         String testPageID = "1234";
         String redirectURL = jsonService.createRedirectURL(testPageID);
-        String result = "https://en.wikipedia.org/?curid=1234";
+        String result = "https://en.wikipedia.org/wiki/1234";
 
-        assertEquals(redirectURL, result);
+        assertEquals( result,redirectURL);
     }
 
 
